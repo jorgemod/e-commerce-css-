@@ -1,0 +1,370 @@
+/* para siempre mantener el tamaño de las cajas con nuestras medidas 
+sin importar el padding y margin usamos el siguiente snippet */
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /* esto equivale a 10 px = 1rem*/
+}
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+/* aqui acaba el snippet */
+/* ////////////////////cambios globales //////////////////*/
+body{
+    font-size: 1.6rem;
+    line-height: 2; /* interlineado */
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+h3{
+    font-size: 3rem;
+}
+img{
+    /* para que las imagenes tomen el tamaño de su contenedor usamos
+    esto combinado con el grid y con el flex nos facilitará el tamaño de las 
+    imagenes */
+    max-width: 100%;
+    /* para eliminar el espacio entre imagenes ocupamos display block  */
+    display: block; 
+}
+.btn{
+    background-color: #8cbc00;
+    font-weight: 900;
+    display: block;
+    padding: 1rem;
+    color: #fff;
+    /* el primer valor de una transicion es la propiedad 
+    luego la duracion de la transicion 
+    y por ultimo el efecto que se le desea aplicar  */
+    transition: background-color .3s ease-out;
+    border: none;
+}
+
+.btn:hover{
+    background-color: #769c02;
+    cursor: pointer;
+
+}
+/*/////////////////////////// terminan cambios globales//////////////////////// */
+
+/* ////////////////// Utilidades //////////////////// */
+.max-width-30{
+    max-width: 30rem;
+}
+
+
+/* //////////////////////////////////////////////////////// */
+
+
+
+h1 span{
+    color: #037bc0;
+}
+
+.nombre-sitio{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    text-align: center;
+    font-size: 4rem;
+}
+.contenedor{
+    max-width: 120rem;
+    margin: 0 auto;
+}
+.contenedor-navegacion{
+    /* siempre va ancho tipo y color */
+    border-top: .1rem solid #e1e1e1 ;
+
+}
+.nav-principal{
+    padding: 2rem 0rem; /*esto es igual a poner 20 0 20 0 y va con las manecillas del reloj*/
+    /* ocupamos flex para activar las otras opciones de flexbox */
+    display: flex; 
+    /* nos dice la direccion de nuestos items por defecto viene con row */
+    /* flex-direction: row; */
+    /* aliecion del contenido usando flexbox */
+    justify-content: space-between;
+}
+.hero{
+    background-image: url(../img/principal.jpg);
+    /* para que no se repita la imagen  */
+    background-repeat: no-repeat; 
+    /* para que la imagen se estire y ocupe todo el ancho  */
+    background-size: cover;
+    /* aqui definimos lo que se va a ver de la imagen  */
+    background-position: center center;
+    /* altura del div que contiene la imagen */
+    height: 55rem;
+
+}
+.categorias-productos{
+    /* para activar el grid */
+    display: grid; 
+    /* estamos definiendo las columnas que tendremos y con repeat decimos 4 cols
+    de 1fr = fraccion igual cada uno */
+    grid-template-columns: repeat(3, 1fr);
+    /* el espaciado se coloca con gap */
+    gap: 2rem;
+}
+
+.categorias h2{
+    text-align: center;
+}
+
+.categoria a{
+    text-align: center;
+    display: block;
+    padding: 2rem;
+    font-size: 2rem;
+}
+.categoria a:hover{
+    background-color: #037bc0;
+    color: #fff;
+    border-bottom-right-radius: 1rem;
+}
+
+
+/* sobre nosotros */
+.sobre_nosotros{
+    background-image: linear-gradient(to right, transparent 50%, #037bc0 50%,
+    #037bc0 100%), url(../img/nosotros.jpg); 
+    background-position: left center;
+    padding: 10rem 0;
+    background-repeat: no-repeat;
+    background-size: 100%, 120rem;
+    margin-top: 4rem;
+}
+.sobre-nosotros-grid{
+    display: flex;
+    justify-content: flex-end;
+}
+.texto-nosotros{
+    /* de esta forma dividimos nuestra fila con el porcentaje que le pongamos */
+    flex-basis: 47%; 
+    color: #fff;
+}
+
+/* grid de productos  */
+
+.contenido-principal h2{
+    text-align: center;
+}
+
+.producto{
+    background-color: #037bc0;
+
+}
+.texto-producto h3{
+    margin: 0;
+    
+}
+.texto-producto p{
+    margin: 0 0 .5rem;
+}
+.texto-producto{
+    text-align: center;
+    color: #fff;
+    padding: 2rem;
+}
+.texto-producto .precio{
+    font-size: 2.8rem;
+    font-weight: 900;
+}
+.texto-producto a{
+    background-color: #8cbc00;
+    font-weight: 900;
+    display: block;
+    padding: 1rem;
+    color: #fff;
+    /* el primer valor de una transicion es la propiedad 
+    luego la duracion de la transicion 
+    y por ultimo el efecto que se le desea aplicar  */
+    transition: background-color .3s ease-out;
+}
+
+.texto-producto a:hover{
+    background-color: #769c02;
+
+}
+
+.listado-productos{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    /* para la separacion entre columnas del grid */
+    gap: 2rem;
+}
+ /* para seleccionar cada uno de los hijos del listado mediante la clase ocupamos nth-child */
+.producto:nth-child(1){
+    grid-column-start: 1;
+    grid-column-end: 7;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+
+}
+.producto:nth-child(1) img{
+    height: 43rem;
+    width: 100%;
+    object-fit: cover;
+}
+.producto:nth-child(2){
+    grid-column-start: 1;
+    grid-column-end: 4;
+
+}
+.producto:nth-child(2) img,
+.producto:nth-child(3) img{
+    /* altura de la imagen deseada */
+    height: 30rem;
+    /* ancho 100 porciento en relacion a su contenedor (pa que se estire) */
+    width: 100%;
+    /* para que la imagen se adapte a la caja usamos cover */
+    object-fit: cover;
+}
+.producto:nth-child(3){
+    grid-column-start: 4;
+    grid-column-end: 7;
+
+}
+.producto:nth-child(4){
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+}
+.producto:nth-child(5){
+    grid-column-start: 3;
+    grid-column-end: 5;
+
+}
+.producto:nth-child(6){
+    grid-column-start: 5;
+    grid-column-end: 7;
+
+}
+.footer-line{
+    border-top: 1px solid #e1e1e1;
+    margin-top: 5rem;
+    padding-top: 5rem;
+}
+.site-footer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+.site-footer h3{
+    margin-bottom: 1rem;
+}
+.copyright{
+    text-align: center;
+    margin-top: 5rem;
+}
+.footer-nav a{
+    display: block;
+    
+}
+
+/* /////////////////////pagina nosotros ///////////*/
+
+.contenido-nosotros{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
+    column-gap: 4rem;
+}
+
+.info-nosotros{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/*//////////////////////////// BLog /////////////////*/
+.contenedor-blog{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 4rem;
+}
+
+.articulo{
+    border-bottom: 2px solid #e1e1e1;
+    padding-bottom: 4rem;
+    margin-bottom: 2rem;
+}
+
+/* El siguiente selector es para seleccionar el ultimo articulo y quitarle su border */
+.articulo:last-of-type{
+    border: none;
+}
+
+.meta-img{
+    display: flex;
+    justify-content: space-between;
+}
+
+.meta-img p{
+    font-weight: bold;
+}
+.meta-img span{
+    color: #037bc0;
+}
+
+
+/* /////////////////////////////// Galeria /////////////////////////////////// */
+
+.galeria-img{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.galeria-img img{
+    height: 40rem;
+    width: 40rem;
+    object-fit: cover;
+}
+
+
+/* ////////////////Forumulario de contacto////////////// */
+.formulario{
+    /* equivale a 60 pixeles */
+    max-width: 60rem; 
+    /* para centrarlo  */
+    margin: 0 auto;
+}
+
+.formulario fieldset{
+    border: 1px solid black;
+    margin-bottom: 2rem;
+}
+
+.formulario legend{
+    background-color: #037bc0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.campo{
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+    
+}
+.campo label{
+    flex-basis: 10rem;
+}
+
+.campo input:not([type="radio"]),
+.campo textarea,
+.campo select{
+    flex: 1;
+    border: 1px solid #e1e1e1;
+    padding: 1rem;
+}
